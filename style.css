@@ -287,28 +287,31 @@ button {
 
 /* FIX: Saved ranking buttons on mobile */
 @media (max-width: 700px) {
+    #savedMenu > div {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        width: 100%;
+        margin-bottom: 8px;
+    }
 
-  #savedMenu > div {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    align-items: center;
-    gap: 6px;
-    width: 100%;
-  }
+    #savedMenu > div button:first-child {
+        flex: 1;
+        width: 0;
+        min-width: 0;
+        box-sizing: border-box;
+        text-align: left;
+        overflow-wrap: anywhere;
+        margin: 0;
+    }
 
-  #savedMenu > div button:first-child {
-    width: 100%;
-    min-width: 0;
-    box-sizing: border-box;
-    text-align: left;
-    white-space: normal;
-    overflow-wrap: anywhere;
-  }
-
-  #savedMenu > div button:last-child {
-    width: auto;
-    min-width: 42px;
-    margin-left: 0 !important;
-  }
-
+    #savedMenu > div button:last-child {
+        flex: 0 0 42px;
+        width: 42px;
+        min-width: 42px;
+        box-sizing: border-box;
+        margin: 0;
+        padding: 8px 4px;
+        text-align: center;
+    }
 }
