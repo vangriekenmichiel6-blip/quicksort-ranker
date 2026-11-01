@@ -238,21 +238,42 @@ function saveRanking(list, mode = "Ranking") {
   loadSavedMenu();
 }
     
+
 function loadSavedMenu() {
   const menu = document.getElementById("savedMenu");
   menu.innerHTML = "";
 
   let all = JSON.parse(localStorage.getItem("rankings") || "[]");
 
+  menu.style.width = "100%";
+  menu.style.minWidth = "0";
+
   all.forEach((ranking, index) => {
     const container = document.createElement("div");
+
+    // Force a horizontal layout
+    container.style.display = "flex";
+    container.style.flexDirection = "row";
+    container.style.alignItems = "center";
+    container.style.width = "100%";
+    container.style.gap = "6px";
+    container.style.marginBottom = "8px";
 
     // LOAD BUTTON
     const loadBtn = document.createElement("button");
     loadBtn.textContent = `${ranking.title} (${ranking.date})`;
+
+    loadBtn.style.flex = "1 1 0";
+    loadBtn.style.width = "0";
+    loadBtn.style.minWidth = "0";
+    loadBtn.style.boxSizing = "border-box";
+    loadBtn.style.textAlign = "left";
+    loadBtn.style.overflowWrap = "anywhere";
+    loadBtn.style.margin = "0";
+
     loadBtn.onclick = () => {
       let all = JSON.parse(localStorage.getItem("rankings") || "[]");
-      let data = all[index]; // 🔥 THIS WAS MISSING
+      let data = all[index];
 
       if (data.items) {
         displayList(data.items);
@@ -265,7 +286,13 @@ function loadSavedMenu() {
     // DELETE BUTTON
     const deleteBtn = document.createElement("button");
     deleteBtn.textContent = "🗑️";
-    deleteBtn.style.marginLeft = "10px";
+
+    deleteBtn.style.flex = "0 0 42px";
+    deleteBtn.style.width = "42px";
+    deleteBtn.style.minWidth = "42px";
+    deleteBtn.style.boxSizing = "border-box";
+    deleteBtn.style.margin = "0";
+    deleteBtn.style.padding = "8px 4px";
 
     deleteBtn.onclick = () => {
       deleteRanking(index);
@@ -273,7 +300,6 @@ function loadSavedMenu() {
 
     container.appendChild(loadBtn);
     container.appendChild(deleteBtn);
-
     menu.appendChild(container);
   });
 }
