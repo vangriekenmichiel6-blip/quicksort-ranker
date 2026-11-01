@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#202938">
+    <meta name="description" content="Create and manage personal rankings with Quicksort Rank.">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" href="icons/icon-192.png" type="image/png">
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
+    <title>QS Ranker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+
+        <!-- LEFT SIDEBAR -->
+        <div id="sidebar">
+            <select id="mode">
+                <option value="sort">QuickSort Ranking</option>
+                <option value="blind">Blind Ranking</option>
+                <option value="keepcut">Keep / Cut</option>
+                <option value="half">Halve the List</option>
+            </select>
+
+            <h2>Unsorted Lists</h2>
+            <div id="unsortedMenu"></div>
+
+            <h2>Saved Rankings</h2>
+            <div class="backup-controls">
+                <button type="button" onclick="exportRankings()">Export backup</button>
+                <button type="button" onclick="document.getElementById('importFile').click()">Import backup</button>
+                <input id="importFile" type="file" accept="application/json,.json" hidden onchange="importRankings(event)">
+            </div>
+            <div id="savedMenu"></div>
+        </div>
+
+        <!-- RIGHT MAIN AREA -->
+        <div id="main">
+            <h1>Rank Your List</h1>
+
+            <textarea id="inputList" placeholder="Enter items (one per line)"></textarea>
+            <br><br>
+
+            <button onclick="start()">Start</button>
+            
+            <p id="progress">Progress: 0 / 0</p>
+            <progress id="progressBar" value="0" max="100"></progress>
+            <h2>Which is better?</h2>
+            <div id="comparison" style="display: none;">
+            <button id="leftButton"></button>
+            <span style="margin: 0 20px;">VS</span>
+            <button id="rightButton"></button>
+            </div>
+
+            <h2>Sorted List:</h2>
+            <div id="currentItem"></div>
+            <div id="blindContainer"></div>
+            <ol id="resultList"></ol>
+
+            <p id="status"></p>
+        </div>
+
+        </div>
+
+    <script src="script.js"></script>
+    <script>
+      if ("serviceWorker" in navigator && (location.protocol === "https:" || location.hostname === "localhost" || location.hostname === "127.0.0.1")) {
+        window.addEventListener("load", () => navigator.serviceWorker.register("./service-worker.js").catch(console.error));
+      }
+    </script>
+</body>
+</html>
