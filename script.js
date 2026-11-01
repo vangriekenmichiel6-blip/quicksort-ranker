@@ -58,10 +58,10 @@ async function partition(myList, lo, hi) {
 }
 
 async function quickSort(myList, lo, hi) {
+  if (lo >= hi) return;
+
   completedPivots++;
   updateProgress();
-  
-  if (lo >= hi) return;
 
   let p = await partition(myList, lo, hi);
   await quickSort(myList, p + 1, hi);
