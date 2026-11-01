@@ -1,0 +1,36 @@
+CVG I
+Analyse I
+Mechanica
+Architectuur Theorie I
+Lineare Algebra
+Natuurkunde
+Analyse II
+Architectuur Gesch. I
+Ontwerp 1A
+Ontwerp 1B
+Ontwerp 1C
+Vormleer
+Ontwerp 2A
+Ontwerp 2B
+Aanvullingen Wiskunde
+Aanvullingen Natuurkunde
+Bouwfysica
+CVG II
+Sterkteleer I
+Sterkteleer II
+Informatica
+Computationeel ontwerpen
+Architectuur Theorie II
+Architectuur Gesch. II
+Wijsbegeerte
+Logica
+Gegevensbanken
+Informatica Werktuigen
+Beginselen Van Programmeren
+Bewijzen en Redeneren
+Gegevensstructuren en Algoritmen
+Fundamenten
+Modulair Programmeren
+Elektrische Netwerken
+Religie en Zingeving
+Kansrekenen
