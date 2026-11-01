@@ -1,4 +1,4 @@
-const CACHE_NAME = "quicksort-rank-v1";
+const CACHE_NAME = "quicksort-rank-v2";
 const APP_FILES = [
   "./",
   "./index.html",
