@@ -1,3 +1,5 @@
+import { deleteRanking } from "./storage.js";
+
 const unsortedFiles = [
   { name: "Pixar Movies", file: "lists/pixar.txt" },
   { name: "Pokemon Gen 1", file: "lists/pokemonGen1.txt" },
