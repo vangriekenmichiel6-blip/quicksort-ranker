@@ -42,7 +42,7 @@
             <textarea id="inputList" placeholder="Enter items (one per line)"></textarea>
             <br><br>
 
-            <button onclick="start()">Start</button>
+            <button id="startButton">Start</button>
             
             <p id="progress">Progress: 0 / 0</p>
             <progress id="progressBar" value="0" max="100"></progress>
@@ -63,7 +63,7 @@
 
         </div>
 
-    <script src="script.js"></script>
+    <script src="./main.js" type="module"></script>
     <script>
       if ("serviceWorker" in navigator && (location.protocol === "https:" || location.hostname === "localhost" || location.hostname === "127.0.0.1")) {
         window.addEventListener("load", () => navigator.serviceWorker.register("./service-worker.js").catch(console.error));

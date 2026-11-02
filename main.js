@@ -1,3 +1,7 @@
+
+import {sort} from "./quicksort.js";
+import {shuffle} from "./basics.js";
+
 const unsortedFiles = [
   { name: "Pixar Movies", file: "lists/pixar.txt" },
   { name: "Pokemon Gen 1", file: "lists/pokemonGen1.txt" },
@@ -19,110 +23,7 @@ const unsortedFiles = [
 let totalPivots = 0;
 let completedPivots = 0;
 
-function hoare(myList, lo, hi){
-    let i = lo
-    let j = hi+1
-    let v = myList[lo]
-    while (true){
-        while (true){
-            i += 1
-            if (i === hi) break
-            if (compare(myList[i], v, true)) {break}
-        }
-        while (true){
-            j -= 1
-            if (j === lo) break
-            if (compare(myList[j], v, false)) {break}
-        }
-        if (i >= j){break}
-        [myList[i], myList[j]] = [myList[j], myList[i]]
-    }
-    [myList[lo], myList[j]] = [myList[j], myList[lo]]
-    return j
-}
-
-async function partition(myList, lo, hi) {
-  let pivot = myList[hi];
-  let i = lo;
-
-  for (let j = lo; j < hi; j++) {
-    if (await compare(myList[j], pivot)) {
-      [myList[i], myList[j]] = [myList[j], myList[i]];
-      i++;
-    }
-  }
-
-  [myList[i], myList[hi]] = [myList[hi], myList[i]];
-
-  return i;
-}
-
-async function quickSort(myList, lo, hi) {
-  if (lo >= hi) return;
-
-  completedPivots++;
-  updateProgress();
-
-  let p = await partition(myList, lo, hi);
-  await quickSort(myList, p + 1, hi);
-  await quickSort(myList, lo, p - 1);
-}
-
-async function sort(myList) {
-  shuffle(myList);
-  await quickSort(myList, 0, myList.length - 1);
-}
-
-function compare(a, b) {
-  return new Promise(resolve => {
-    const comparisonDiv = document.getElementById("comparison");
-    const leftButton = document.getElementById("leftButton");
-    const rightButton = document.getElementById("rightButton");
-
-    comparisonDiv.style.display = "block";
-
-    // clear previous content
-    leftButton.innerHTML = "";
-    rightButton.innerHTML = "";
-
-    // add text
-    const leftText = document.createElement("div");
-    leftText.textContent = a.name;
-    const rightText = document.createElement("div");
-    rightText.textContent = b.name;
-
-    leftButton.appendChild(leftText);
-    rightButton.appendChild(rightText);
-
-    // add image if exists
-    if (a.image) {
-      const img = document.createElement("img");
-      img.src = a.image;
-      img.style.maxWidth = "100px";
-      img.style.display = "block";
-      img.style.marginTop = "5px";
-      leftButton.appendChild(img);
-    }
-
-    if (b.image) {
-      const img = document.createElement("img");
-      img.src = b.image;
-      img.style.maxWidth = "100px";
-      img.style.display = "block";
-      img.style.marginTop = "5px";
-      rightButton.appendChild(img);
-    }
-
-    leftButton.onclick = () => {
-      comparisonDiv.style.display = "none";
-      resolve(true);  // left item is better
-    };
-    rightButton.onclick = () => {
-      comparisonDiv.style.display = "none";
-      resolve(false); // right item is better
-    };
-  });
-}
+document.getElementById("startButton").addEventListener("click", start);
 
 async function start() {
   let mode = document.getElementById("mode").value;
@@ -168,37 +69,6 @@ async function startSort(list) {
 
   displayList(list);
   saveRanking(list);
-}
-
-function displayList(list) {
-    const resultContainer = document.getElementById("resultList");
-    resultContainer.innerHTML = "";
-
-    const columns = 3;
-    const rows = Math.ceil(list.length / columns);
-
-    resultContainer.style.gridTemplateColumns = `repeat(${columns}, 1fr)`;
-    resultContainer.style.gridTemplateRows = `repeat(${rows}, auto)`;
-    resultContainer.style.gridAutoFlow = "row";
-
-    list.forEach((item, index) => {
-        const li = document.createElement("li");
-
-        const nameDiv = document.createElement("div");
-        nameDiv.textContent = `${index + 1}. ${item.name}`;
-        li.appendChild(nameDiv);
-
-        if (item.image) {
-            const img = document.createElement("img");
-            img.src = item.image;
-            img.style.maxWidth = "100px";
-            img.style.display = "block";
-            img.style.marginTop = "5px";
-            li.appendChild(img);
-        }
-
-        resultContainer.appendChild(li);
-    });
 }
 
 function loadUnsortedMenu() {
@@ -302,13 +172,6 @@ function loadSavedMenu() {
     container.appendChild(deleteBtn);
     menu.appendChild(container);
   });
-}
-
-function shuffle(array) {
-  for (let i = array.length - 1; i > 0; i--) {
-    let j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
-  }
 }
 
 function toColumns(list, columns) {
