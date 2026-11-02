@@ -1,3 +1,5 @@
+import { loadSavedMenu } from "./ui";
+
 export function saveRanking(list, mode = "Ranking") {
   let title = prompt(`Enter a title for this ${mode}:`);
   if (!title) return;

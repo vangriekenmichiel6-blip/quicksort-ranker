@@ -16,7 +16,7 @@ const unsortedFiles = [
   { name: "Marvel", file: "lists/marvel.txt"},
 ];
 
-function displayList(list) {
+export function displayList(list) {
     const resultContainer = document.getElementById("resultList");
     resultContainer.innerHTML = "";
 

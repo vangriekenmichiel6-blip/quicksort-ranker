@@ -1,4 +1,6 @@
 import {shuffle} from "./basics.js";
+import {displayList} from "./ui.js";
+import { saveRanking } from "./storage.js";
 
 let totalPivots = 0;
 let completedPivots = 0;
