@@ -1,4 +1,5 @@
 import { deleteRanking } from "./storage.js";
+import { displayKeepCutGrid} from "./keepcut.js"
 
 const unsortedFiles = [
   { name: "Pixar Movies", file: "lists/pixar.txt" },

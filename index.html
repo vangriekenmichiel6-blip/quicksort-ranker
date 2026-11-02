@@ -28,9 +28,9 @@
 
             <h2>Saved Rankings</h2>
             <div class="backup-controls">
-                <button type="button" onclick="exportRankings()">Export backup</button>
-                <button type="button" onclick="document.getElementById('importFile').click()">Import backup</button>
-                <input id="importFile" type="file" accept="application/json,.json" hidden onchange="importRankings(event)">
+                <button type="button" id="exportBut">Export backup</button>
+                <button type="button" id="importBut">Import backup</button>
+                <input id="importFile" type="file" accept="application/json,.json" hidden>
             </div>
             <div id="savedMenu"></div>
         </div>
