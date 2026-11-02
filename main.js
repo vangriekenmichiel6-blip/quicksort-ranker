@@ -20,9 +20,6 @@ const unsortedFiles = [
   { name: "Marvel", file: "lists/marvel.txt"},
 ];
 
-let totalPivots = 0;
-let completedPivots = 0;
-
 document.getElementById("startButton").addEventListener("click", start);
 
 async function start() {
@@ -200,14 +197,6 @@ function deleteRanking(index) {
   localStorage.setItem("rankings", JSON.stringify(all));
 
   loadSavedMenu(); // refresh UI
-}
-
-function updateProgress() {
-  document.getElementById("progress").innerText =
-    `Progress: ${completedPivots} / ${totalPivots}`;
-
-  let percent = (completedPivots / totalPivots) * 100;
-  document.getElementById("progressBar").value = percent;
 }
 
 window.onload = function () {
