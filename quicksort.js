@@ -3,7 +3,21 @@ import {shuffle} from "./basics.js";
 let totalPivots = 0;
 let completedPivots = 0;
 
-export async function sort(myList) {
+export async function startSort(list) {
+  document.getElementById("status").innerText = "Sorting...";
+
+  totalPivots = list.length;
+  completedPivots = 0;
+
+  updateProgress();
+
+  await sort(list); 
+
+  displayList(list);
+  saveRanking(list);
+}
+
+async function sort(myList) {
   shuffle(myList);
   await quickSort(myList, 0, myList.length - 1);
 }
@@ -113,5 +127,5 @@ function updateProgress() {
     `Progress: ${completedPivots} / ${totalPivots}`;
 
   let percent = (completedPivots / totalPivots) * 100;
-  document.getElementById("progressBar").value = Number.isFinite(percent) ? progress : 0;
+  document.getElementById("progressBar").value = Number.isFinite(percent) ? percent : 0;
 }
