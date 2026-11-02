@@ -28,7 +28,8 @@ const APP_FILES = [
   "./lists/r6att.txt",
   "./lists/r6def.txt",
   "./lists/r6ops.txt",
-  "./lists/soadsongs.txt"
+  "./lists/soadsongs.txt",
+  "./lists/marvelheros.txt"
 ];
 
 self.addEventListener("install", event => {
