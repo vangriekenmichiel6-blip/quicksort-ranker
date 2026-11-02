@@ -17,7 +17,7 @@ const unsortedFiles = [
   { name: "MCU", file: "lists/MCUprojects.txt"},
   { name: "PZ1 Animals", file: "lists/pz1allanimals.txt"},
   { name: "Marvel", file: "lists/marvel.txt"},
-  { name: "Marvel Heros", file: "lists/marvelheros.txt"},
+  { name: "Marvel Heroes", file: "lists/marvelheros.txt"},
 ];
 
 export function displayList(list) {

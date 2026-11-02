@@ -1,5 +1,5 @@
 
-const CACHE_NAME = "quicksort-rank-v3";
+const CACHE_NAME = "quicksort-rank-v4";
 
 const APP_FILES = [
   "./",
